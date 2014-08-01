@@ -26,6 +26,9 @@ sudo add-apt-repository -y ppa:cassou/emacs
 sudo apt-get -qq update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
+# Install Midnight Commander
+sudo apt-get install mc
+
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
@@ -38,10 +41,19 @@ fi
 if [ -d .emacs.d/ ]; then
     mv .emacs.d .emacs.d~
 fi
-git clone https://github.com/startup-class/dotfiles.git
+git clone https://github.com/barnkob/dotfiles.git
 ln -sb dotfiles/.screenrc .
 ln -sb dotfiles/.bash_profile .
 ln -sb dotfiles/.bashrc .
 ln -sb dotfiles/.bashrc_custom .
+ln -sb dotfiles/.softhsm.conf
 ln -sf dotfiles/.emacs.d .
 
+# Set up Github
+echo 'Please enter your git email: '
+read GITMAIL
+echo 'Please enter your git name: '
+read GITNAME
+
+git config --global user.email "$GITMAIL"
+git config --global user.name "$GITNAME"
