@@ -1,16 +1,18 @@
 #!/bin/bash
-# Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
+# Simple setup.sh for configuring Ubuntu 14 LTS for VirtualBox 
 # for headless setup. 
 
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y python-software-properties
 wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+# wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.13.1/install.sh | bash
+
 
 # Load nvm and install latest production node
 source $HOME/.nvm/nvm.sh
-nvm install v0.10.12
-nvm use v0.10.12
+nvm install v0.13.1
+nvm use v0.13.1
 
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
@@ -22,8 +24,8 @@ sudo apt-get install -y rlwrap
 
 # Install emacs24
 # https://launchpad.net/~cassou/+archive/emacs
-sudo add-apt-repository -y ppa:cassou/emacs
-sudo apt-get -qq update
+# sudo add-apt-repository -y ppa:cassou/emacs
+# sudo apt-get -qq update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
 # Install Midnight Commander
@@ -57,3 +59,9 @@ read GITNAME
 
 git config --global user.email "$GITMAIL"
 git config --global user.name "$GITNAME"
+
+ssh-keygen -t rsa -C "$GITMAIL"
+echo 'Copy the public key to github:'
+echo ' '
+cat ~/.ssh/id_rsa.pub
+
