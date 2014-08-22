@@ -11,8 +11,8 @@ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
 
 # Load nvm and install latest production node
 source $HOME/.nvm/nvm.sh
-nvm install v0.13.1
-nvm use v0.13.1
+nvm install v0.11.13
+nvm use v0.11.13
 
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
