@@ -29,7 +29,10 @@ sudo apt-get install -y rlwrap
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
 # Install Midnight Commander
-sudo apt-get install mc
+sudo apt-get install -y mc
+
+# Install g++ and make - this is for the the browser tester zombie to be installable
+sudo apt-get install -y g++ make
 
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
